@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifs - Au Bon Poil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2 {
+            font-weight: 700;
+            color: #ff9800;
+        }
+        h2 {
+            font-size: 2rem;
+        }
+        a {
+            text-decoration: none;
+            color: #ff9800;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('chien.png') no-repeat center center/cover;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+        .hero h1 {
+            font-size: 3rem;
+        }
+
+        /* Tarifs Container */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Cards */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .card h2 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            color: #ff9800;
+        }
+        .card p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        .card .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff7300;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .contact p {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .contact a {
+            color: #ff9800;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        footer p {
+            margin: 0.5rem 0;
+        }
+        footer a {
+            color: #ff9800;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Nos Tarifs</h1>
+</section>
+
+<!-- Tarifs Section -->
+<div class="container">
+    <div class="cards">
+        <!-- Card 1 -->
+        <div class="card">
+            <h2>Visite à domicile</h2>
+            <p>Nous visitons votre animal chez vous pour nous assurer de son bien-être.</p>
+            <div class="price">15€ / visite</div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <h2>Promenade quotidienne</h2>
+            <p>Des promenades adaptées pour maintenir votre animal en bonne santé.</p>
+            <div class="price">10€ / promenade</div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <h2>Garde à court terme</h2>
+            <p>Nous veillons sur votre animal pendant vos absences.</p>
+            <div class="price">30€ / jour</div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <h2>Service Premium</h2>
+            <p>Une garde personnalisée avec des soins supplémentaires pour votre compagnon.</p>
+            <div class="price">50€ / jour</div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Section -->
+<div class="contact">
+    <h2>Contactez-nous</h2>
+    <p>Email : <a href="mailto:contact@aubonpoil.com">contact@aubonpoil.com</a></p>
+    <p>Téléphone : <a href="tel:0123456789">01 23 45 67 89</a></p>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Au Bon Poil. Tous droits réservés.</p>
+    <p><a href="index.html">Retour à l'accueil</a></p>
+</footer>
+
+</body>
+</html>
