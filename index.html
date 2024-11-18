@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Au Bon Poil - Pet Sitting Professionnel</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2 {
+            font-weight: 700;
+            color: #ff9800;
+        }
+        h2 {
+            font-size: 2rem;
+        }
+        a {
+            text-decoration: none;
+            color: #ff9800;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('chien.png') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: #333;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        nav a {
+            font-weight: 500;
+            color: white;
+        }
+        nav a:hover {
+            color: #ff9800;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Cards */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .card h2 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        .card p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        footer p {
+            margin: 0.5rem 0;
+        }
+        footer a {
+            color: #ff9800;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>Au Bon Poil</h1>
+    <p>Confiance, Soin et Expertise pour Vos Animaux</p>
+</section>
+
+<div class="container">
+    <!-- Section À Propos -->
+    <div class="cards">
+        <div class="card" id="about">
+            <h2>À Propos de Nous</h2>
+            <p>Chez <strong>Au Bon Poil</strong>, nous savons combien vos animaux comptent pour vous.</p>
+            <p>Avec des années d'expérience et une passion inégalée, nous offrons un service professionnel et chaleureux.</p>
+        </div>
+
+        <!-- Section Services -->
+        <div class="card" id="services">
+            <h2>Nos Services</h2>
+            <p>Visites à domicile, promenades quotidiennes, et garde à court terme : nous prenons soin de vos animaux comme si c’étaient les nôtres.</p>
+        </div>
+
+        <!-- Section Contact -->
+        <div class="card" id="contact">
+            <h2>Contactez-Nous</h2>
+            <p>Vous avez une question ou souhaitez réserver nos services ?</p>
+            <p><strong>Email :</strong> contact@aubonpoil.com</p>
+            <p><strong>Téléphone :</strong> 01 23 45 67 89</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Au Bon Poil. Tous droits réservés.</p>
+    <p><a href="#top">Retour en haut</a></p>
+</footer>
+
+</body>
+</html>
