@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Au Bon Poil - Site et Chatbot</title>
+    <title>Au Bon Poil - Accueil</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
@@ -84,6 +84,20 @@
             margin-bottom: 1rem;
             color: #555;
         }
+        .card a {
+            display: inline-block;
+            margin-top: 1rem;
+            background-color: #ff9800;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .card a:hover {
+            background-color: #e68900;
+        }
 
         /* Footer */
         footer {
@@ -103,103 +117,100 @@
             text-decoration: underline;
         }
 
-        /* Chatbot Styles */
+        /* Chatbot */
         .chatbot-container {
             position: fixed;
             bottom: 20px;
             right: 20px;
-        }
-        .chatbot {
-            width: 350px;
+            width: 300px;
             background: white;
+            border: 1px solid #ddd;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            font-family: 'Roboto', sans-serif;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
-            overflow: hidden;
-            display: none; /* Masqué par défaut */
+            z-index: 1000;
+        }
+        .hidden {
+            display: none;
         }
         .chatbot-header {
-            background-color: #ff9800;
+            background: #ff9800;
             color: white;
-            text-align: center;
-            font-weight: bold;
             padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
             cursor: pointer;
         }
-        .chatbot-messages {
+        .chatbot-body {
             flex: 1;
             padding: 10px;
-            background: #f9f9f9;
             overflow-y: auto;
-            height: 250px;
+            max-height: 300px;
+            font-size: 0.9rem;
         }
-        .chatbot-messages div {
-            margin: 5px 0;
-            padding: 8px 12px;
-            border-radius: 10px;
-            display: inline-block;
-            max-width: 80%;
-        }
-        .user-message {
-            background-color: #e1e1e1;
-            color: #333;
-            text-align: right;
-            margin-left: auto;
-        }
-        .bot-message {
-            background-color: #ff9800;
-            color: white;
-            text-align: left;
-        }
-        .chatbot-buttons {
+        .chatbot-footer {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            flex-direction: column;
             padding: 10px;
-            background: #f9f9f9;
+            border-top: 1px solid #ddd;
         }
-        .chatbot-buttons button {
+        #chatInput {
             flex: 1;
-            padding: 10px;
-            background-color: #ff9800;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .send-btn {
+            background: #ff9800;
+            color: white;
             border: none;
             border-radius: 5px;
-            color: white;
-            font-size: 0.9rem;
+            padding: 5px 10px;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
-        .chatbot-buttons button:hover {
-            background-color: #e68900;
+        .question-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
         }
-
-        /* Open/Close Button */
-        .toggle-chatbot {
-            background-color: #ff9800;
+        .question-buttons button {
+            background: #f1f1f1;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .question-buttons button:hover {
+            background: #ddd;
+        }
+        .chatbot-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff9800;
             color: white;
             border: none;
-            border-radius: 50px;
-            padding: 10px 20px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-        .toggle-chatbot:hover {
-            background-color: #e68900;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .chatbot {
-                width: 95%;
-                bottom: 10px;
-                right: 10px;
-            }
-            .toggle-chatbot {
-                right: 10px;
-                bottom: 10px;
-            }
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
@@ -213,23 +224,24 @@
 
 <!-- Main Content -->
 <div class="container">
-    <!-- Section À Propos -->
     <div class="cards">
+        <!-- Section À Propos -->
         <div class="card" id="about">
             <h2>À Propos de Nous</h2>
             <p>Chez <strong>Au Bon Poil</strong>, nous savons combien vos animaux comptent pour vous.</p>
             <p>Avec des années d'expérience et une passion inégalée, nous offrons un service professionnel et chaleureux.</p>
         </div>
 
-        <!-- Section Services -->
+        <!-- Section Nos Services -->
         <div class="card" id="services">
             <h2>Nos Services</h2>
             <p>Visites à domicile, promenades quotidiennes, et garde à court terme : nous prenons soin de vos animaux comme si c’étaient les nôtres.</p>
+            <a href="tarifs.html">Voir nos Tarifs</a>
         </div>
 
-        <!-- Section Contact -->
+        <!-- Section Nous Contacter -->
         <div class="card" id="contact">
-            <h2>Contactez-Nous</h2>
+            <h2>Nous Contacter</h2>
             <p>Vous avez une question ou souhaitez réserver nos services ?</p>
             <p><strong>Email :</strong> contact@aubonpoil.com</p>
             <p><strong>Téléphone :</strong> 01 23 45 67 89</p>
@@ -242,57 +254,87 @@
     <p>&copy; 2024 Au Bon Poil. Tous droits réservés.</p>
 </footer>
 
-<!-- Chatbot Container -->
-<div class="chatbot-container">
-    <div class="chatbot" id="chatbot">
-        <div class="chatbot-header" onclick="toggleChatbot()">Chatbot - Au Bon Poil</div>
-        <div class="chatbot-messages" id="chatbot-messages"></div>
-        <div class="chatbot-buttons">
-            <button onclick="handleQuestion('Bonjour')">Bonjour</button>
-            <button onclick="handleQuestion('Quels sont vos services ?')">Services</button>
-            <button onclick="handleQuestion('Comment vous contacter ?')">Contact</button>
-            <button onclick="handleQuestion('Merci')">Merci</button>
-            <button onclick="handleQuestion('Au revoir')">Au revoir</button>
-        </div>
+<!-- Chatbot HTML -->
+<div id="chatbot" class="chatbot-container hidden">
+    <div class="chatbot-header">
+        <h3>Chatbot - Au Bon Poil</h3>
+        <button id="closeChatbot" class="close-btn">&times;</button>
     </div>
-    <button class="toggle-chatbot" id="toggle-chatbot" onclick="toggleChatbot()">💬 Chat</button>
+    <div class="chatbot-body" id="chatContent">
+        <!-- Messages will appear here -->
+    </div>
+    <div class="chatbot-footer">
+        <div class="question-buttons">
+            <!-- Automatic Question Buttons -->
+            <button data-question="Bonjour">Bonjour</button>
+            <button data-question="Quels sont vos services ?">Quels sont vos services ?</button>
+            <button data-question="Combien coûte une visite ?">Combien coûte une visite ?</button>
+            <button data-question="Au revoir">Au revoir</button>
+        </div>
+        <input type="text" id="chatInput" placeholder="Écrivez votre question..." />
+        <button id="sendMessage" class="send-btn">Envoyer</button>
+    </div>
 </div>
+
+<!-- Bouton pour ouvrir le chatbot -->
+<button id="openChatbot" class="chatbot-toggle-btn">🤖</button>
 
 <script>
     const chatbot = document.getElementById('chatbot');
-    const toggleChatbotButton = document.getElementById('toggle-chatbot');
-    const chatbotMessages = document.getElementById('chatbot-messages');
+    const openChatbotBtn = document.getElementById('openChatbot');
+    const closeChatbotBtn = document.getElementById('closeChatbot');
+    const chatInput = document.getElementById('chatInput');
+    const sendMessageBtn = document.getElementById('sendMessage');
+    const chatContent = document.getElementById('chatContent');
+    const questionButtons = document.querySelectorAll('.question-buttons button');
 
-    const botReplies = {
-        "Bonjour": "Bonjour ! Comment puis-je vous aider aujourd'hui ? 😊",
-        "Quels sont vos services ?": "Nous proposons des visites à domicile, des promenades et des gardes temporaires pour vos animaux.",
-        "Comment vous contacter ?": "Vous pouvez nous contacter par email à contact@aubonpoil.com ou par téléphone au 01 23 45 67 89.",
-        "Merci": "Avec plaisir ! 😊 Si vous avez d'autres questions, n'hésitez pas.",
-        "Au revoir": "Au revoir ! Passez une excellente journée !"
+    const responses = {
+        "Bonjour": "Bonjour ! Comment puis-je vous aider aujourd'hui ?",
+        "Quels sont vos services ?": "Nous proposons des visites à domicile, des promenades et des gardes personnalisées.",
+        "Combien coûte une visite ?": "Une visite à domicile coûte 15€.",
+        "Au revoir": "Au revoir ! À bientôt !"
     };
 
-    function toggleChatbot() {
-        if (chatbot.style.display === "none" || chatbot.style.display === "") {
-            chatbot.style.display = "flex";
-            toggleChatbotButton.style.display = "none";
-        } else {
-            chatbot.style.display = "none";
-            toggleChatbotButton.style.display = "block";
-        }
+    openChatbotBtn.addEventListener('click', () => {
+        chatbot.classList.remove('hidden');
+        openChatbotBtn.classList.add('hidden');
+    });
+
+    closeChatbotBtn.addEventListener('click', () => {
+        chatbot.classList.add('hidden');
+        openChatbotBtn.classList.remove('hidden');
+        chatContent.innerHTML = "";
+    });
+
+    sendMessageBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
+
+    questionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const question = button.getAttribute('data-question');
+            addMessage("Vous", question);
+            const botResponse = responses[question] || "Désolé, je n'ai pas compris votre question.";
+            setTimeout(() => addMessage("Chatbot", botResponse), 500);
+        });
+    });
+
+    function sendMessage() {
+        const userMessage = chatInput.value.trim();
+        if (!userMessage) return;
+
+        addMessage("Vous", userMessage);
+        const botResponse = responses[userMessage] || "Désolé, je n'ai pas compris votre question.";
+        setTimeout(() => addMessage("Chatbot", botResponse), 500);
+        chatInput.value = "";
     }
 
-    function addMessage(message, type) {
+    function addMessage(sender, message) {
         const messageDiv = document.createElement('div');
-        messageDiv.className = type === 'bot' ? 'bot-message' : 'user-message';
-        messageDiv.textContent = message;
-        chatbotMessages.appendChild(messageDiv);
-        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-    }
-
-    function handleQuestion(question) {
-        addMessage(question, 'user');
-        const botReply = botReplies[question] || "Je suis désolé, je n'ai pas compris votre question.";
-        setTimeout(() => addMessage(botReply, 'bot'), 500);
+        messageDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
+        chatContent.appendChild(messageDiv);
+        chatContent.scrollTop = chatContent.scrollHeight;
     }
 </script>
 
